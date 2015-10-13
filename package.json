@@ -1,0 +1,22 @@
+{
+  "name": "whereisit",
+  "version": "1.0.0",
+  "description": "visualize geoip data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "map",
+    "geo"
+  ],
+  "author": "Alexander Zhukov",
+  "license": "ISC",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^2.4.1",
+    "geoip-lite": "^1.1.6",
+    "ttys": "0.0.3"
+  }
+}
