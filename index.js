@@ -26,7 +26,7 @@ function app(ip, input, output){
 
   screen.append(map);
 
-  map.addMarker({"lon" : "" + geo.ll[1], "lat" : "" + geo.ll[0], color: "red", char: "X" })
+  map.addMarker({"lon" : "" + geo.ll[1], "lat" : "" + geo.ll[0], color: "red", char: "*" })
 
   screen.key(['escape', 'q', 'C-c'], function(ch, key) {
    return process.exit(0);
