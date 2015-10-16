@@ -72,6 +72,7 @@ drawApp();
 function drawMarkers(ipList){
   ipList.forEach(function(ip){
     var geo = geoip.lookup(ip);
+    if(!geo) { return; }
     map.addMarker({"lon" : "" + geo.ll[1], "lat" : "" + geo.ll[0], color: "red", char: "°" })
     log.log(ip + " (" + (geo.city || "<unknown city>") + ", " + geo.country + ")");
   });
