@@ -33,5 +33,8 @@ or even
 tail -f iplist.log.txt | iponmap  #draws new point on new line
 ```
 
+#### Exit from application
+**escape**, **q** , **Ctrl-c**
+
 ## Bugs/Issues/Feature requests
 Create new issue [here](https://github.com/nogizhopaboroda/iponmap/issues)
