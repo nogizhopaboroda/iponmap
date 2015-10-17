@@ -8,6 +8,8 @@ Try it, feel yourself a real hacker or CIA agent.
 
 <img src="screenshot.png" alt="term" width="800">
 
+[screencast demo](https://youtu.be/38YvtaQ3gRs)
+
 ## Installation
 ```shell
 npm install -g iponmap
