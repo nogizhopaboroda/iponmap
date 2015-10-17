@@ -5,6 +5,7 @@ IpOnMap is a CLI application that visualises geoip data on the world map using a
 Try it, feel yourself a real hacker or CIA agent.
 
 **Demo:**
+
 <img src="screenshot.png" alt="term" width="800">
 
 ## Installation
