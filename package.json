@@ -1,8 +1,13 @@
 {
-  "name": "whereisit",
+  "name": "iponmap",
   "version": "1.0.0",
   "description": "visualize geoip data",
+  "readme": "README.md",
   "main": "index.js",
+  "bin": {
+    "iponmap": "./index.js"
+  },
+  "preferGlobal": "true",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
