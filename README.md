@@ -2,7 +2,6 @@
 
 IpOnMap is a CLI application that visualises geoip data on the world map using awesome nodejs dashboard library [blessed-contrib](https://github.com/yaronn/blessed-contrib). 
 
-Try it, feel yourself a real hacker.
 
 **Demo:**
 
