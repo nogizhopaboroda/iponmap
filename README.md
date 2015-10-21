@@ -1,6 +1,8 @@
 # iponmap
 
-IpOnMap is a CLI application that visualises geoip data on the world map using awesome nodejs dashboard library [blessed-contrib](https://github.com/yaronn/blessed-contrib). 
+IpOnMap locates IP address lookup on the world map right in your terminal using awesome nodejs dashboard library [blessed-contrib](https://github.com/yaronn/blessed-contrib).
+
+You might've seen it in the films about hackers. Now it's real with `iponmap`.
 
 
 **Demo:**
