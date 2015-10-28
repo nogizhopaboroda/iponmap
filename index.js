@@ -32,18 +32,13 @@ if(data.length){
 function drawHelp(){
   console.log(
     (function(){/*
-        Usage: cmus-bundler [option]
+        Usage: iponmap [options] [ip...]
 
         Options:
 
           -h, --help            output usage information
           -v, --version         output the version number
           -t, --trace           trace points
-
-        Examples:
-          $ iponmap <ip>
-          $ $(cmus-bundler -p)/plugin_foo/binary_file
-          $ cmus-bundler man | less
     */})
     .toString()
     .replace(/function.*\{\/\*([\s\S]+)\*\/\}$/ig, "$1")
