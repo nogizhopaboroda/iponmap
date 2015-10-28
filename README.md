@@ -17,6 +17,22 @@ npm install -g iponmap
 ```
 
 ## Usage
+
+***
+```shell
+$ iponmap -h
+
+  Usage: iponmap [options] [ip...]
+
+  Options:
+
+    -h, --help            output usage information
+    -v, --version         output the version number
+    -t, --trace           trace points
+    -c, --count           count uniq points
+```
+***
+
 pass ips as a parameters
 ```shell
 iponmap ip1 ip2 ip3
@@ -38,6 +54,10 @@ tail -f iplist.log.txt | iponmap  #draws new point on new line
 `-c`,`--count`: count uniq points
 
 `-t`, `--trace`: trace points
+
+`-h`, `--help`: print help message
+
+`-v`, `--version`: print version
 
 ## Examples
 ```shell
