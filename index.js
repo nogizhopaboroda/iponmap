@@ -101,6 +101,9 @@ function drawApp(){
 
 function drawMarkers(ipList){
   ipList.forEach(function(ip){
+    var match = ip.match(/(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/);
+    if(!match) { return; }
+    ip = match[0];
     var geo = geoip.lookup(ip);
     if(!geo) { return; }
     var markerChar = "°";
