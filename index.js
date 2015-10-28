@@ -9,8 +9,8 @@ var packageInfo = require("./package.json");
 hasArgs(['--help', '-h']) && drawHelp();
 hasArgs(['--version', '-v']) && (console.log(packageInfo.version) || process.exit(0));
 
-var TRACER  = hasArgs(['--trace', '-t']) ? 1 : 0;
-var COUNTER = hasArgs(['--count', '-c']) ? 1 : 0;
+var TRACER  = hasArgs(['--trace', '-t']) ? 1    : 0;
+var COUNTER = hasArgs(['--count', '-c']) ? true : false;
 
 var map, log, screen;
 
@@ -39,6 +39,7 @@ function drawHelp(){
           -h, --help            output usage information
           -v, --version         output the version number
           -t, --trace           trace points
+          -c, --count           count uniq points
     */})
     .toString()
     .replace(/function.*\{\/\*([\s\S]+)\*\/\}$/ig, "$1")
@@ -99,6 +100,7 @@ function drawApp(){
   screen.append(log);
 }
 
+var counterMap = {};
 function drawMarkers(ipList){
   ipList.forEach(function(ip){
     var match = ip.match(/(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/);
@@ -110,6 +112,11 @@ function drawMarkers(ipList){
     if(TRACER){
       markerChar = "" + TRACER;
       TRACER++;
+    }
+    if(COUNTER){
+      var key = geo.ll[0] + "|" + geo.ll[1];
+      counterMap[key] = (counterMap[key] || 0) + 1;
+      markerChar += "(" + counterMap[key] + ")";
     }
     map.addMarker({"lon" : "" + geo.ll[1], "lat" : "" + geo.ll[0], color: "red", char: markerChar });
     log.log((TRACER ? "" + markerChar + ") " : "") + ip + " (" + (geo.city || "<unknown city>") + ", " + geo.country + ")");
