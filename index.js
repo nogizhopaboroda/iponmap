@@ -1,16 +1,23 @@
 #!/usr/bin/env node
 
-var blessed = require('blessed');
-var contrib = require('blessed-contrib');
-var ttys    = require('ttys');
-var geoip   = require('geoip-lite');
+var blessed     = require('blessed');
+var contrib     = require('blessed-contrib');
+var ttys        = require('ttys');
+var geoip       = require('geoip-lite');
+var packageInfo = require("./package.json");
 
+hasArgs(['--help', '-h']) && drawHelp();
+hasArgs(['--version', '-v']) && (console.log(packageInfo.version) || process.exit(0));
+
+var TRACER  = hasArgs(['--trace', '-t']) ? 1 : 0;
+var COUNTER = hasArgs(['--count', '-c']) ? 1 : 0;
 
 var map, log, screen;
 
+var data = cleanArgs();
+
 drawApp();
 
-var data = process.argv.slice(2);
 if(data.length){
   drawMarkers(data);
 } else {
@@ -22,6 +29,28 @@ if(data.length){
   });
 }
 
+function drawHelp(){
+  console.log(
+    (function(){/*
+        Usage: cmus-bundler [option]
+
+        Options:
+
+          -h, --help            output usage information
+          -v, --version         output the version number
+          -t, --trace           trace points
+
+        Examples:
+          $ iponmap <ip>
+          $ $(cmus-bundler -p)/plugin_foo/binary_file
+          $ cmus-bundler man | less
+    */})
+    .toString()
+    .replace(/function.*\{\/\*([\s\S]+)\*\/\}$/ig, "$1")
+  );
+
+  process.exit(0);
+}
 
 function drawApp(){
   var MAP_AR = 162 / 36; // map aspect ratio, 4.5
@@ -79,8 +108,31 @@ function drawMarkers(ipList){
   ipList.forEach(function(ip){
     var geo = geoip.lookup(ip);
     if(!geo) { return; }
-    map.addMarker({"lon" : "" + geo.ll[1], "lat" : "" + geo.ll[0], color: "red", char: "°" })
-    log.log(ip + " (" + (geo.city || "<unknown city>") + ", " + geo.country + ")");
+    var markerChar = "°";
+    if(TRACER){
+      markerChar = "" + TRACER;
+      TRACER++;
+    }
+    map.addMarker({"lon" : "" + geo.ll[1], "lat" : "" + geo.ll[0], color: "red", char: markerChar });
+    log.log((TRACER ? "" + markerChar + ") " : "") + ip + " (" + (geo.city || "<unknown city>") + ", " + geo.country + ")");
   });
   screen.render();
+}
+
+function hasArgs(argsList){
+  var argsList = [].concat(argsList);
+  for(var arg in argsList){
+    if(~process.argv.indexOf(argsList[arg])){
+      return true;
+    }
+  }
+  return false;
+}
+
+function cleanArgs(){
+  var args = [];
+  process.argv.slice(2).forEach(function(arg){
+    !/^[-]{1,2}/.test(arg) && args.push(arg);
+  });
+  return args;
 }
