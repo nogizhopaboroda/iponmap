@@ -34,6 +34,25 @@ or even
 tail -f iplist.log.txt | iponmap  #draws new point on new line
 ```
 
+## Arguments
+`-c`,`--count`: count uniq points
+
+`-t`, `--trace`: trace points
+
+## Examples
+```shell
+# show my ip on map
+curl -s http://www.telize.com/ip | iponmap
+```
+
+```shell
+host google.com | iponmap -c
+```
+
+```shell
+traceroute -n google.com | iponmap -t
+```
+
 #### Exit from application
 **escape**, **q** , **Ctrl-c**
 
