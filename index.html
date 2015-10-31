@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Iponmap by nogizhopaboroda</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Iponmap</h1>
+        <h2>commandline IP location finder</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/nogizhopaboroda/iponmap/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/nogizhopaboroda/iponmap/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/nogizhopaboroda/iponmap" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="iponmap" class="anchor" href="#iponmap" aria-hidden="true"><span class="octicon octicon-link"></span></a>iponmap</h1>
+
+<p>IpOnMap locates IP address lookup on the world map right in your terminal using awesome nodejs dashboard library <a href="https://github.com/yaronn/blessed-contrib">blessed-contrib</a>.</p>
+
+<p>You might've seen it in the films about hackers. Now it's real with <code>iponmap</code>.</p>
+
+<p><strong>Demo:</strong></p>
+
+<p><img src="screenshot.png" alt="term" width="800"></p>
+
+<p><a href="https://youtu.be/38YvtaQ3gRs">screencast demo</a></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-source-shell"><pre>npm install -g iponmap</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<hr>
+
+<div class="highlight highlight-source-shell"><pre>$ iponmap -h
+
+  Usage: iponmap [options] [ip...]
+
+  Options:
+
+    -h, --help            output usage information
+    -v, --version         output the version number
+    -t, --trace           trace points
+    -c, --count           count uniq points</pre></div>
+
+<hr>
+
+<p>pass ips as a parameters</p>
+
+<div class="highlight highlight-source-shell"><pre>iponmap ip1 ip2 ip3</pre></div>
+
+<p>or through stdin (one ip per line)</p>
+
+<div class="highlight highlight-source-shell"><pre>cat iplist.txt <span class="pl-k">|</span> iponmap</pre></div>
+
+<p>or</p>
+
+<div class="highlight highlight-source-shell"><pre>iponmap <span class="pl-k">&lt;</span> iplist.txt</pre></div>
+
+<p>or even</p>
+
+<div class="highlight highlight-source-shell"><pre>tail -f iplist.log.txt <span class="pl-k">|</span> iponmap  <span class="pl-c">#draws new point on new line</span></pre></div>
+
+<h2>
+<a id="arguments" class="anchor" href="#arguments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arguments</h2>
+
+<p><code>-c</code>,<code>--count</code>: count uniq points</p>
+
+<p><code>-t</code>, <code>--trace</code>: trace points</p>
+
+<p><code>-h</code>, <code>--help</code>: print help message</p>
+
+<p><code>-v</code>, <code>--version</code>: print version</p>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># show my ip on map</span>
+curl -s http://www.telize.com/ip <span class="pl-k">|</span> iponmap</pre></div>
+
+<div class="highlight highlight-source-shell"><pre>host google.com <span class="pl-k">|</span> iponmap -c</pre></div>
+
+<div class="highlight highlight-source-shell"><pre>traceroute -n google.com <span class="pl-k">|</span> iponmap -t</pre></div>
+
+<h4>
+<a id="exit-from-application" class="anchor" href="#exit-from-application" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exit from application</h4>
+
+<p><strong>escape</strong>, <strong>q</strong> , <strong>Ctrl-c</strong></p>
+
+<h2>
+<a id="bugsissuesfeature-requests" class="anchor" href="#bugsissuesfeature-requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bugs/Issues/Feature requests</h2>
+
+<p>Create new issue <a href="https://github.com/nogizhopaboroda/iponmap/issues">here</a></p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
