@@ -68,6 +68,10 @@ header h2 {
   color: #666;
 }
 
+#downloads iframe {
+  margin-bottom: -6px;
+}
+
 #downloads .btn {
   display: inline-block;
   text-align: center;
