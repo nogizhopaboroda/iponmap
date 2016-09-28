@@ -62,7 +62,7 @@ tail -f iplist.log.txt | iponmap  #draws new point on new line
 ## Examples
 ```shell
 # show my ip on map
-curl -s http://www.telize.com/ip | iponmap
+curl http://ipinfo.io/ip | iponmap
 ```
 
 ```shell
